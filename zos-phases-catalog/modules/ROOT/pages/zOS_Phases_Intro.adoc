@@ -37,6 +37,5 @@ These files contain the JCL models and other useful types.
 Before using the Phases, you should carefully check all the settings in the different files.
 If you need any assistance, you can always contact Kobee Support (recommended if you are new to using the z/OS Solution Phases).
 
-For more detailed information, refer to the Technical _IKAN
-ALM_Zos_Phases_Usage_ Guide.
+For more detailed information, refer to the Technical xref:5.7@how-to-use-and-develop-phases-en:ROOT:UseDevelopPhases.adoc[Use and Develop Phases Guide]. 
 ====
