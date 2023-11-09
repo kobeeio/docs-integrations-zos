@@ -1,0 +1,90 @@
+[[_id1695e07074t]]
+= SQL DB2 files Execution 
+
+== Purpose
+
+This is an optional z/OS Phase.
+
+This phase is used to complete SQL DB2 files with environment DB2 parameters _with_ variable replacements and to submit them, first for executing the DDL (data definition language) Files and next for executing the SQL (standard) Files on the DB2 Database.
+
+The Phase does not copy the DDL/SQL DB2 Files from the ALM Environment Target to z/OS PDSs if the _db2.copyfiles_ parameter is not set to true.
+
+The files are concatenated without order in a global SYSIN for each logical DB2 environment for the DB2 ssid of the environment.
+
+[NOTE]
+====
+The _Copy from Source to Target_ Phase may assume a previous copy action to the target in the Environment Phase sequence without variable replacements.
+The _Promotion
+of components and load-modules_ Phase may transfer its to z/OS PDSs without variable replacements.
+====
+
+== Usage
+
+The _SQL DB2 files Execution_ Phase can be used on Deploy Environments.
+
+This Phase is dependent on the <<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>> Phase.
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|z/OS SQL DB2 updates
+|zosSqlDb2.xml
+
+|db2.copyfiles
+|O
+|Option for transferring SQL Files to z/OS PDS (true or false)
+|false
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels 
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.environment
+|O
+|Property File of z/OS environment
+|${dir.zosResources}/environment_deploy.properties
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|propsfile.parmsFTP
+|O
+|Property File of z/OS FTP or MFDAS system
+|${dir.zosResources}/parmsFTPZOS.properties
+
+|stopOnError
+|O
+|Option for stopping on error with z/OS activity.
+|false
+|===

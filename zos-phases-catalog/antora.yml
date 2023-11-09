@@ -1,0 +1,6 @@
+name: integration-zos-phases-catalog
+title: z/OS Phases Catalog
+version: '2.1'
+start_page: ROOT:zOS_Phases_Intro.adoc
+nav:
+- modules/ROOT/nav.adoc

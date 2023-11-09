@@ -1,0 +1,75 @@
+[[_id1695e07050q]]
+= Jman Jmodels Deployment 
+
+== Purpose
+
+This is an optional z/OS Phase.
+
+This phase is used to copy and generate JCL execution file to deploy the Jmodels in the z/OS environments from logical JMAN targets.
+If logical JMAN Models are completed with the JMAN generator, they are copied in the Environment PDSs of the JCLs.
+
+== Usage
+
+The _Jman Jmodels Deployment_ Phase can be used on Deploy Environments.
+
+This Phase is dependent on the <<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>> Phase.
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|z/OS Jman Jmodels Deployment
+|zosJmodelDeploy.xml
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels 
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.environment
+|O
+|Property File of z/OS environment
+|${dir.zosResources}/environment_deploy.properties
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|propsfile.parmsFTP
+|O
+|Property File of z/OS FTP or MFDAS system
+|${dir.zosResources}/parmsFTPZOS.properties
+
+|stopOnErrorDeploy
+|O
+|Option for stopping on error with z/OS activity.
+|false
+|===

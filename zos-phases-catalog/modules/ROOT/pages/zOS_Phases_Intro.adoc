@@ -1,0 +1,42 @@
+= Introduction
+
+Kobee provides Life Cycle Management Solutions for z/OS Mainframe using specific Solution Phases. 
+
+The Solution Phases include Phases for compiling sources (in several languages) and maps on the z/OS platform, and Phases for managing object deployments on PDSs, Db2 binds, DCF or QMF files, Datacom plans or Debuggers and more.
+These deployments may be completed by generated Jobs executed later on. No started task is necessary as the Phases will use one of the following protocols: z/OS FTP, MFDAS (MicroFocus), ZOSMF (z/OS Management Facility) or USS (z/OS Unix ALM Agent).
+
+This guide describes the different parameters used by each of those Phases.
+
+== Assumed Knowledge
+
+To be able to use the Phases, we assume that Kobee is up and running, that the connection with the versioning components is set up and that the z/OS Solution Phases have been imported in Kobee. 
+
+== General
+
+Most of the z/OS Solution Phases generate a JCL to be executed.
+
+To generate that JCL, the Phases use the parameters and properties specified in the following types of files:
+
+* Object-type properties files
++
+For each object type you use, you need to specify the different parameters needed for the scripts and models.
+* Language properties file
++
+This file contains the properties of the different z/OS programming languages used (only needed for the Build process)
+* Resources and environment properties files
++
+These files contain the properties for the different Environments
+* Model files
++
+These files contain the JCL models and other useful types.
+
+
+[NOTE]
+====
+
+Before using the Phases, you should carefully check all the settings in the different files.
+If you need any assistance, you can always contact Kobee Support (recommended if you are new to using the z/OS Solution Phases).
+
+For more detailed information, refer to the Technical _IKAN
+ALM_Zos_Phases_Usage_ Guide.
+====

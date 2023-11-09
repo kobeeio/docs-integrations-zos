@@ -1,0 +1,81 @@
+[[_id1695e0707sa]]
+= Delete Sources and their associated objects
+
+== Purpose
+
+This is an optional z/OS Phase.
+
+This phase is used to delete the z/OS files selected using the "`.to_be_deleted`" suffix in their respective z/OS PDSs.
+The associated files (Load-modules, listing, dbrm, bind files) will also be deleted in the corresponding PDS(s).
+
+This Phase is also used for deleting components of the previous Level of Environment after the Promotion in the normal Environment for the cascade of environments in the Lifecycle.
+In that case the option _Deletion_ should be used.
+
+== Usage
+
+The _Delete Sources and their associated objects_ Phase can be used on Deploy Environments. 
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|Delete Sources and associated objects
+|zosDeleteObsoleteFiles.xml
+
+|delete_suffix
+|O
+|Suffix used for files to delete.
+|to_be_deleted
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels 
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources 
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.environment
+|O
+|Property File of z/OS environment
+|${dir.zosResources}/environment_deploy.properties
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|propsfile.parmsFTP
+|O
+|Property File of z/OS FTP or MFDASsystem
+|${dir.zosResources}/parmsFTPZOS.properties
+
+|stopOnError
+|O
+|Option for stopping on error with z/OS activity.
+|false
+|===

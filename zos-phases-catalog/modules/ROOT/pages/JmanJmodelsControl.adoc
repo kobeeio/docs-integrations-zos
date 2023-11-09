@@ -1,0 +1,79 @@
+[[_id1695e0704nk]]
+= Jman Jmodels Control 
+
+== Purpose
+
+This is an optional z/OS Phase.
+
+This phase is used to copy and generate the JCL execution file to validate the Jmodel file in the z/OS environments using the JMAN generator.
+
+== Usage
+
+The _Jman Jmodels control_ Phase can be used on Build Environments.
+
+This Phase is dependent on the <<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>> Phase.
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|allocPDS
+|O
+|Option for creating/deleting PDS used on z/OS
+|true
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|z/OS Jman Jmodels Control
+|zosJmodelControl.xml
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels 
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.environment
+|O
+|Property File of z/OS environment
+|${dir.zosResources}/environment_build.properties
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|propsfile.parmsFTP
+|O
+|Property File of z/OS FTP or MFDAS system
+|${dir.zosResources}/parmsFTPZOS.properties
+
+|stopOnErrorControl
+|O
+|Option for stopping on error with z/OS activity.
+|false
+|===

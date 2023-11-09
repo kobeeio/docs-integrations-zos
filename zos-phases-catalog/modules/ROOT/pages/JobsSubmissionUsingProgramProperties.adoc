@@ -1,0 +1,89 @@
+[[_jobs_submission_using_program_properties]]
+= Jobs Submission using Program properties 
+
+== Purpose
+
+This is an optional z/OS Phase.
+This phase is used to run the standard Jobs for ZOS with these actions:
+
+* Select Job members and generate JOBs for submitting  to JES ZOS initiator.
+* Step generation is depending on associated program property file
+* Return the JES logs
+* Get files, listing and other results of the execution
+
+
+== Usage
+
+The Jobs Submission using Program properties Phase can be used on Deploy Environments.
+
+This Phase is dependent on the <<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>> Phase.
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|z/OS Jobs Submission Program properties
+|zosJobSubmission.xml
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels 
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|dir.jeslogs 	
+|O 	
+|Jes log location if error 	
+|${target}/logs 
+
+|stopOnErrorSubmit 	
+|O
+|Option for stopping at the end of submissions    
+|false
+
+|propsfile.environment
+|O
+|Property File of z/OS environment
+|${dir.zosResources}/environment_deploy.properties
+
+|propsfile.parmsFTP
+|O
+|Property File of z/OS FTP or MFDAS system
+|${dir.zosResources}/parmsFTPZOS.properties
+
+|propsfile.languages 	
+|O 	
+|Property File of z/OS languages 	
+|${dir.zosResources}/languagesZOSJOB.properties
+|===

@@ -1,0 +1,183 @@
+[[_id16cnb0n0278]]
+= List Files from location to CSV or Excel file 
+
+== Purpose
+
+This is an optional z/OS Phase.
+
+Generates a .csv or Excel file listing the files in the target environment (by default). This can be useful to get an overview of the files (and their dependent objects) that have been transferred.
+
+Generates a .csv file or an Excel file listing the files in the target environment (by default). This can be useful to get an overview of the files (and their dependent objects) that have been transferred at a specific moment.
+The final objective is to load this result list in a table to provide a report on the file deployments.
+It can be completed by the _Register environment
+Files Activity_ Phase, which is not a "`z/OS`" but a "`Tools`" Phase, and the _File Environment Activity_ project for reporting with the extra "`fileEnvironmentActivity`" Report installed with ALM_Reports.
+
+== Usage
+
+The _List Files from location to CSV or Excel
+file_ Phase can be used on Build and Deploy Environments. 
+
+This Phase is dependent on the <<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>> Phase of you want to list the Target location files.
+If required, this Phase may also be used for other locations.
+
+== Parameters
+
+[cols="1,1,1,1", frame="none", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|z/OS List Files from location
+|zosEnvironmentFilesList.xml
+
+|baseLocation
+|O
+|Location where the files to list are
+|${targetProject.dir}
+
+|customPhases
+|O
+|Customer Phase prefix(es) to ignore
+|
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels 
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|excel.fileName
+|O
+|Excel File of results
+|${baseLocation}/listFiles.xls
+
+|ignore.headline
+|O
+|If true, the headline is ignored in the csv file.
+Useful for concatenating lists in same CSV file
+|false
+
+|lastdate.pattern
+|O
+|File Date format used in the Report
+|yyyy/MM/dd HH:mm:ss
+
+|list.excludes
+|O
+|Typically Files not selected
+|\\**/*.tmp,\**/*.zip,log*.xml,${listName},\**/*.properties
+
+|list.fileName
+|O
+|CSV File of results
+|${baseLocation}/listFiles.csv
+
+|list.headline
+|O
+|Headline of resulting CSV file
+|projectName,streamType,projectStream,packageName,levelName,actionType,requestOid,vcrTag,machine,environment,requestDate,requester,filePath,fileName,fileAction,fileSize,fileLastdate
+
+|list.includes
+|O
+|Files selected
+|\**/*.*
+
+|packageOidInTarget
+|O
+|List Components from Target completed by package Oid (initZosInfos)
+|true
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|setAllComponents
+|O
+|Copy Components to Target
+|false
+
+|setDBscriptsComponents
+|O
+|Copy DataBase Sources object types (i.e. sql, ddl, bat, sh, ini)
+|false
+
+|setDeleteComponents
+|O
+|Copy "to_be_deleted" components
+|false
+
+|setListsComponents
+|O
+|Copy Listings object types
+|false
+
+|setObjectsComponents
+|O
+|Copy all Objects object types (i.e.
+setObjectsZos,
+|false
+
+|setObjectsIdms
+|O
+|Copy IDMS Objects object types
+|false
+
+|setObjectsZos
+|O
+|Copy z/OS Objects object types
+|false
+
+|setPropertyFiles
+|O
+|Copy Property Files
+|false
+
+|setSourcesComponents
+|O
+|Copy all Sources object types (i.e. setSourcesZos, setSourcesIdms)
+|false
+
+|setSourcesIdms
+|O
+|Copy IDMS Sources object types
+|false
+
+|setSourcesZos
+|O
+|Copy z/OS Sources object types (i.e. copy, source, jcl, sysin, etc..)
+|false
+
+|sqlMain.template
+|O
+|sqlMain template properties for SQLPlus Oracle
+|*_main
+
+|targetProject.dir
+|O
+|Target directory
+|${target}
+|===

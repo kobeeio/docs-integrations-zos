@@ -1,0 +1,83 @@
+[[_id1695k0f02da]]
+= Promote Datacom components 
+
+== Purpose
+
+This is an optional z/OS Phase.
+
+This phase is used to submit a JCL for importing Datacom Plans in a Datacom environment.
+
+The Phase does not copy the Datacom Plan Files from the ALM Environment Target to z/OS PDSs.
+Therefore, the _Promotion
+of components and load-modules_ Phase must be used previously in the phase sequence.
+
+== Usage
+
+The _Promote Datacom components_ Phase can be used on Deploy Environments. 
+
+This Phase is dependent on the <<PromotionComponentsLoadModules.adoc#_id1695e0706y6,Promotion of components and load-modules>> Phase.
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|z/OS Datacom components Promotion
+|zosUpdateDatacom.xml
+
+|datacom.merge.list
+|O
+|Option for merging lists (true or false)
+|false
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels 
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.environment
+|O
+|Property File of z/OS environment
+|${dir.zosResources}/environment_deploy.properties
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|propsfile.parmsFTP
+|O
+|Property File of z/OS FTP or MFDAS system
+|${dir.zosResources}/parmsFTPZOS.properties
+
+|stopOnError
+|O
+|Option for stopping on error with z/OS activity.
+|false
+|===

@@ -1,0 +1,89 @@
+[[_id1695e0706y6]]
+= Promotion of components and load-modules
+
+== Purpose
+
+This is a mandatory z/OS Phase.
+
+This Phase copies the z/OS files selected from the Environment Target to their respective z/OS PDSs.
+The load-modules are copied to temporary sequential files and the script creates and submits a JCL for receiving them in their PDSs.
+
+BIND DB2 files and SQL files may be transferred to z/OS PDSs without variable replacements.
+For these variable replacements see the dedicated DB2 Phases.
+
+[NOTE]
+====
+Additionally, for IDMS objects, the _Idms
+Components Promotion_ Phase (<<IdmsComponentsPromotion.adoc#_id1695k0f0377,Promote Idms components>> may be used. 
+====
+
+== Usage
+
+The _Promotion of components and load-modules_ Phase can be used on Deploy Environments.
+
+This Phase is dependent on the <<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>> Phase.
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|Promote components and load-modules to z/OS environment
+|zosPromotion.xml
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels 
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.environment
+|O
+|Property File of z/OS environment
+|${dir.zosResources}/environment_deploy.properties
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|propsfile.parmsFTP
+|O
+|Property File of z/OS FTP or MFDAS system
+|${dir.zosResources}/parmsFTPZOS.properties
+
+|recvend.model
+|O
+|End JCL model to use after the receive command
+|recvend_jcl.model
+
+|stopOnError
+|O
+|Option for stopping on error with z/OS activity.
+|false
+|===

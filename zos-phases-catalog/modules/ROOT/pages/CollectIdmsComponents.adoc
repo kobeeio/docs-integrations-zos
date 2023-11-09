@@ -1,0 +1,87 @@
+[[_id1695df00qvl]]
+= Collect Idms Components
+
+== Purpose
+
+This is an optional z/OS Phase.
+
+This Phase is used to collect IDMS components. 
+
+In case of a Build level, this phase is used to manage and collect information of the different IDMS components for the IDMS development dictionary. 
+
+In case of a Test (or Production) level, the Phase is executed a second time to control the correlation between the components and the target dictionary, and to load the generated files that will be transmitted to the Target dictionary for deployment.
+The different types loaded are specified in the _idmsObjtypes.properties_ file (__propsfile.objtypes__ parameter). 
+
+[NOTE]
+====
+To collect other necessary non-IDMS sources, the <<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>> Phase can be used.
+====
+
+== Usage
+
+The _Collect Idms Components_ Phase can be used on a Build Environment.
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|Collect and Check Idms Data components
+|zosCollectIdms.xml
+
+|controlCorrelation
+|O
+|Option for executing Correlation (true or false)
+|false
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels 
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.environment
+|O
+|Property File of z/OS environment
+|${dir.zosResources}/environment_build.properties
+
+|propsfile.objtypes
+|O
+|Idms Object Types file to use
+|${dir.zosResources}/idmsObjtypes.properties
+
+|propsfile.parmsFTP
+|O
+|Property File of z/OS FTP or MFDAS system
+|${dir.zosResources}/parmsFTPZOS.properties
+
+|stopOnError
+|O
+|Option for stopping on error with z/OS activity.
+|false
+|===

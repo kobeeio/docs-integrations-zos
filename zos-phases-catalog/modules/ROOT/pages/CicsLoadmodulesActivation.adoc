@@ -1,0 +1,82 @@
+[[_id1695k0f01in]]
+= Cics Load-modules activation 
+
+== Purpose
+
+This is an optional z/OS Phase.
+
+The phase is used to generate PHASEIN CICS commands and to submit them for immediately activating CICS load module files (maps and programs).
+
+The Phase selects the CICS Load-module Files from the Kobee Target Environment for generating a JCL using PHASEIN commands and runs the JCL on z/OS.
+There is no control of the actions as there are no results for the commands.
+
+[NOTE]
+====
+The _Promotion of components and load-modules_ Phase assumes the action of copy from the target, and transfers them to z/OS PDSs, before in the Environment Phase sequence.
+====
+
+== Usage
+
+The _Cics Load-modules activation_ Phase can be used on Deploy Environments.
+
+This Phase is dependent on the <<PromotionComponentsLoadModules.adoc#_id1695e0706y6,Promotion of components and load-modules>> Phase.
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|z/OS Cics Load-modules activation
+|zosUpdateCics.xml
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.environment
+|O
+|Property File of z/OS environment
+|${dir.zosResources}/environment_deploy.properties
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|propsfile.parmsFTP
+|O
+|Property File of z/OS FTP or MFDAS system 
+|${dir.zosResources}/parmsFTPZOS.properties
+
+|stopOnError
+|O
+|Option for stopping on error with z/OS activity.
+|false
+|===

@@ -1,0 +1,131 @@
+= z/OS Deploy Phases
+
+The following z/OS Phases can be used for the z/OS Deploy process (M = Mandatory, O = Optional). The table indicates which other Phase they are dependent on.
+If there is no dependency, the Phase is working from the Source Environment location.
+
+Click the name of one of the Phases in the table below to display all detailed information concerning the characteristics and usage of the Phase.
+
+[cols="1,1,1", frame="topbot", options="header"]
+|===
+| M/O
+| Deploy Phase
+| Dependent on
+
+|_M_
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+|/
+
+|_M_
+|<<PromotionComponentsLoadModules.adoc#_id1695e0706y6,Promotion of components and load-modules>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<CicsLoadmodulesActivation.adoc#_id1695k0f01in,Cics Load-modules activation>>
+|<<PromotionComponentsLoadModules.adoc#_id1695e0706y6,Promotion of components and load-modules>>
+
+|O
+|<<CopyPDSMembersToPDS.adoc#_id1695de00p9r,Copy PDS Members to PDS>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<DB2BindsTransferActivation.adoc#_id1695dd00mfu,DB2 Binds transfer and activation>>
+|<<PromotionComponentsLoadModules.adoc#_id1695e0706y6,Promotion of components and load-modules>>
+
+|O
+|<<DCFFilesDeployment.adoc#_id1695dg00z1h,DCF Files Deployment>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<DeleteSourcesAssObjects.adoc#_id1695e0707sa,Delete Sources and their associated objects>>
+|/
+
+|O
+|<<DemotionComponents.adoc#_id1695de00yd4,Demote components and load-modules>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<JclsSubmissionOnJES.adoc#_jcls_submission_on_jes,Jcls submission on JES>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<JmanJmodelsDeployment.adoc#_id1695e07050q,Jman Jmodels Deployment>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<JobsSubmissionUsingProgramProperties#_jobs_submission_using_program_properties,Jobs Submission using Program properties>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<ListFilesFromLocation.adoc#_id16cnb0n0278,List Files from location to CSV or Excel file>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<DatacomComponentsPromotion.adoc#_id1695k0f02da,Promote Datacom components>>
+|<<PromotionComponentsLoadModules.adoc#_id1695e0706y6,Promotion of components and load-modules>>
+
+|O
+|<<DebuggerUpdate.adoc#_id1695k0f028f,Promote Debugger components>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<EndevorComponentsPromotion.adoc#_id1695k0f03ub,Promote Endevor components>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<IdmsComponentsPromotion.adoc#_id1695k0f0377,Promote Idms components>>
+|/
+
+|O
+|<<PDSAllocationDeletion.adoc#_pdssallocationdeletion,PDSs Allocation or Deletion>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<QMFFilesDeployment.adoc#_id1695e0707mg,QMF Files Deployment>>
+|<<PromotionComponentsLoadModules.adoc#_id1695e0706y6,Promotion of components and load-modules>>
+
+|O
+|<<SQLDB2UpdatesExecution.adoc#_id1695e07074t,SQL DB2 files Execution>>
+|<<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>>
+
+|O
+|<<UnixFileConversion.adoc#_id1695de007w4,Unix Files Conversion>>
+|<<PromotionComponentsLoadModules.adoc#_id1695e0706y6,Promotion of components and load-modules>>
+|===
+
+== Mandatory Phases
+
+There are two basic, mandatory, z/OS Deploy Phases. 
+
+They complement two Kobee core Phases, i.e., the __Transport
+Build Result __Phase (retrieving the content from the Build Archive into Kobee) and the _Decompress Build
+Result_ Phase (unzipping the Archive files to the Kobee Source location).
+
+[cols="1,1,1", frame="topbot", options="header"]
+|===
+| Sequence
+| Solution Phase
+| Usage
+
+|_1_
+|Copy from Source to Target
+|This Phase selects the files that need to be copied, using predefined filters and include/exclude masks.
+Next, the selected files are copied from the Source location on the Kobee Agent to the Target location on the Kobee Agent.
+The following Phases in the sequence will only use the copied files from this Target location.
+
+|_2_
+|Promotion of components and load-modules
+|This Phase copies the z/OS files selected from the Environment Target to their respective z/OS PDSs.
+The load-modules are copied to temporary sequential files and a JCL is created and submitted for receiving them in their PDSs.
+|===
+
+_IMPORTANT:_
+
+The following sequence rules must be followed.
+
+* The mandatory Phases must be used in the sequence order specified in the table above.
+* The other (optional) Deploy Phases may be inserted in between or after the mandatory Phases, respecting the dependency rules.
+
+
+== Optional Phases
+
+The other Deploy Phases are for specific usage and can be inserted wherever they are needed in the sequence of Phases for the Environment`'s Lifecycle.

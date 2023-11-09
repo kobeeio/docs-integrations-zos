@@ -1,0 +1,89 @@
+[[_id1695dd00mfu]]
+= DB2 Binds transfer and activation
+
+== Purpose
+
+This is an optional z/OS Phase.
+
+This phase is used to complete the promotion of the DBRM files with environment data, to transfer and to submit generated JCL(s) for activating DB2 Bind Package and/or Plan Files. 
+
+It is possible to copy generated Binds in dedicated PDS(s) for each logical DB2 environment.
+
+The Phase copies the Bind Db2 Files from the ALM Environment Target ([target]/bind folder) to z/OS PDSs, or, if that is not the case, gets Bind DB2 members from the PDS environment for completing the generated JCL with Binds to execute, or generates Binds from Models.
+The Phase applies one more logical DB2 substitution for the DB2 SSID of the environment.
+
+== Usage
+
+The _DB2 Binds transfer and activation_ Phase can be used on Deploy Environments.
+
+This Phase is dependent on the <<PromotionComponentsLoadModules.adoc#_id1695e0706y6,Promotion of components and load-modules>> Phase.
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|z/OS DB2 Binds transfer and activation
+|zosBindDb2.xml
+
+|createBindSysin
+|O
+|Option for creating Bind Sysin files with models (true or false)
+|true
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels 
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.db2Rules
+|O
+|Property File for DB2 rules
+|${dir.zosResources}/db2Rules.properties
+
+|propsfile.environment
+|O
+|Property File of z/OS environment
+|${dir.zosResources}/environment_deploy.properties
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|propsfile.parmsFTP
+|O
+|Property File of z/OS FTP or MFDAS system
+|${dir.zosResources}/parmsFTPZOS.properties
+
+|stopOnError
+|O
+|Option for stopping on error with z/OS activity.
+|false
+|===

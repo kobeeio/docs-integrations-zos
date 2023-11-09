@@ -1,0 +1,99 @@
+[[_id1695de007w4]]
+= Unix Files Conversion
+
+== Purpose
+
+This is an optional z/OS Phase.
+
+This phase is used to generate the required JCL files for converting EBCDIC files into ASCII.
+
+== Usage
+
+The _Unix Files Conversion_ Phase can be used on Deploy Environments.
+
+This Phase is dependent on the <<PromotionComponentsLoadModules.adoc#_id1695e0706y6,Promotion of components and load-modules>> Phase.
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|z/OS Unix Files Conversion
+|zosConvertUnixFile.xml
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels 
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|env.lib.service
+|M
+|PDS work Prefix for copying files
+|${env.lib}.serv
+
+|env.path.from
+|O
+|Location of files to convert
+|${env.path}
+
+|env.path.to
+|M
+|Location of converted files
+|
+
+|option.active
+|M
+|Option activated for now (i.e. ${service.active} in environment)
+|true
+
+|option.code
+|M
+|Code of option (i.e. SERVICE:YES) in object-type to select
+|XXX
+
+|option.function
+|O
+|Function of object-type to select
+|GENERATE
+
+|option_jcl.model
+|O
+|Model of JCL Step
+|zosConvertFile_jcl.model
+
+|option_sysin.model
+|O
+|Model of Sysin line(s)
+|zosConvertFile_sysin.model
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/ globalObjtypes.properties
+|===

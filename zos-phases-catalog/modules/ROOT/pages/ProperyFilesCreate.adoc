@@ -1,0 +1,88 @@
+[[_id1695e070656]]
+= Create Property Files 
+
+== Purpose
+
+This is an optional z/OS Phase.
+
+This phase is used to generate property files.
+This phase is only used for non-compiled source files needing specific property files. 
+
+[NOTE]
+====
+Except for QMF.
+See also the <<QMFFilesCreate.adoc#_id1695e0706sp,Create QMF Property Files>> Phase.
+====
+
+== Usage
+
+The _Create Property Files_ Phase can be used on the Build Environment.
+
+This Phase is dependent on the <<CopyFromSourceTarget.adoc#_id1695k0k0ijd,Copy from Source to Target>> Phase.
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|z/OS Create Property Files
+|zosPropertyBuild.xml
+
+|dir.zosModels
+|O
+|Models Location
+|[alm_system]/[Machine]/PhaseModels
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|option.active
+|M
+|Option activated for now (i.e.
+${dcf.active} in environment)
+|true
+
+|option.code
+|M
+|Code of option (i.e.
+DCF:YES) in object-type to select
+|XXX
+
+|option.function
+|O
+|Function of object-type to select
+|FILE
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|subtool.model
+|O
+|Model of Properties
+|property.model
+|===

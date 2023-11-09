@@ -1,0 +1,164 @@
+[[_id1695k0k0ijd]]
+= Copy from Source folder to Target folder
+
+== Purpose
+
+This is a mandatory z/OS Phase.
+However, if the Sources have already been made available in the target location in another way (which is not recommended), this Phase is not required.
+
+This Phase selects the files that need to be copied, using predefined filters and include/exclude masks.
+Next, the selected files are copied from the Source location on the Kobee Agent to the Target location on the Kobee Agent.
+It may be used for copying FROM and TO other locations if required.
+
+[NOTE]
+====
+For IDMS objects, the <<CollectIdmsComponents.adoc#_id1695df00qvl,Collect Idms Components>> Phase may be used on the Build process and the <<IdmsComponentsPromotion.adoc#_id1695k0f0377,Promote Idms components>> Phase on the Deploy Process instead of this Phase.
+====
+
+== Usage
+
+The _Copy from Source folder to Target folder_ Phase can be used on Build and Deploy Environments.
+This Phase is mandatory.
+
+* On the __Build Environment__, this phase must precede the two other mandatory Build Phases: _Copy Sources to PDS for Compilation a_ and __Maps and Programs compilation__.
+* On the __Deploy Environment__, this Phase can be inserted wherever required in the lifecycle.
+
+
+== Parameters
+
+[cols="1,1,1,1", frame="topbot", options="header"]
+|===
+| Parameter
+| Mandatory/Optional
+| Description
+| Default Value
+
+|alm.phase.builder
+|M
+|
+|
+
+|alm.phase.extractBundle
+|M
+|
+|true
+
+|alm.phase.mainScript
+|M
+|z/OS Copy from Source folder to Target folder
+|zosCopySourceToTarget.xml
+
+|cleanTarget
+|O
+|Clean the Target folder before copying.
+|false
+
+|customPhases
+|O
+|Customer Phase prefix(es) to ignore
+|
+
+|dir.zosResources
+|O
+|Property files Location
+|[alm_system]/[Machine]/PhaseResources
+
+|excludedFiles
+|O
+|excludes criteria
+|
+
+|flattenCopy
+|O
+|Components are copied to targetProject.dir without sub-directory
+|false
+
+|includedFiles
+|O
+|includes criteria
+|\**/*.*
+
+|packageOidInTarget
+|O
+|Copy Components to Target completed by package Oid (initZosInfos)
+|true
+
+|project.objtypes
+|O
+|List of Object Types to select
+|ALL
+
+|propsfile.objtypes
+|O
+|Global Object Types file to use
+|${dir.zosResources}/globalObjtypes.properties
+
+|setAllComponents
+|O
+|Copy Components to Target
+|false
+
+|setDBscriptsComponents
+|O
+|Copy DataBase Sources object types (i.e.
+sql, ddl + bat, sh, ini)
+|false
+
+|setDeleteComponents
+|O
+|Copy "to_be_deleted" components
+|false
+
+|setListsComponents
+|O
+|Copy Listings object types
+|false
+
+|setObjectsComponents
+|O
+|Copy all Objects object types (i.e.
+setObjectsZos, setObjectsIdms)
+|false
+
+|setObjectsIdms
+|O
+|Copy IDMS Objects object types
+|false
+
+|setObjectsZos
+|O
+|Copy z/OS Objects object types
+|false
+
+|setPropertyFiles
+|O
+|Copy Property Files
+|false
+
+|setSourcesComponents
+|O
+|Copy all Sources object types (i.e.
+setSourcesZos, setSourcesIdms)
+|false
+
+|setSourcesIdms
+|O
+|Copy IDMS Sources object types
+|false
+
+|setSourcesZos
+|O
+|Copy z/OS Sources object types (i.e.
+copy, source, jcl, sysin, etc..)
+|false
+
+|sourceProject.dir
+|O
+|Source directory
+|${source}
+
+|targetProject.dir
+|O
+|Target directory
+|${target}
+|===
