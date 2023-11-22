@@ -1,0 +1,6 @@
+name: krc-installation-guide
+title: KRC Installation Guide
+version: '2.2'
+start_page: ROOT:InstallationGuide.adoc
+nav:
+- modules/ROOT/nav.adoc  

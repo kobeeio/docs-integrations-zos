@@ -1,0 +1,54 @@
+extends: default
+font:
+  catalog:
+    merge: true
+    Source Sans Pro:
+      normal: sourcesanspro-normal.ttf
+      italic: sourcesanspro-italic.ttf
+      bold: sourcesanspro-bold.ttf
+      bold_italic: sourcesanspro-bold_italic.ttf
+    Noto Serif:
+      normal: GEM_FONTS_DIR/notoserif-regular-subset.ttf
+      italic: GEM_FONTS_DIR/notoserif-italic-subset.ttf
+      bold: GEM_FONTS_DIR/notoserif-bold-subset.ttf
+      bold_italic: GEM_FONTS_DIR/notoserif-bold_italic-subset.ttf   
+base:
+  font-family: Noto Serif  
+  font-color: #333333
+  border-color: #7f8f94
+footer:
+  height: 0.75in
+  line-height: 1
+  font-color: #7f8f94
+  padding: [20, 0, 0, 0]
+  recto:
+    right:
+      content: '{section-or-chapter-title} | *{page-number}*'
+    left:
+      content: "Kobee Resource Configurator Installation Guide - {revnumber}"      
+  verso:
+    left:
+      content: '*{page-number}* | {section-or-chapter-title}'
+    right:
+      content: "Kobee Resource Configurator Installation Guide - {revnumber}"      
+title-page:
+  font-family: Source Sans Pro  
+  logo:
+    image: image:../images/_pdf_logo.png[]
+    align: center  
+  title:
+    font-color: #2d2d2c
+    margin-bottom: 20    
+  authors:
+    content: "{author}"
+    font-size: 10
+    font-color: #7f8f94
+    margin-bottom: 20    
+  revision:
+    font-color: #2d2d2c
+    font-size: 16
+    font-style: bold  
+heading:
+  font-family: Source Sans Pro
+  font-color: #2d2d2c
+  margin-top: 16
