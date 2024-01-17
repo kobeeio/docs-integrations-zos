@@ -1,0 +1,31 @@
+// The imagesdir attribute is only needed to display images during offline editing. Antora neglects the attribute.
+:imagesdir: ../images
+
+[[_export]]
+= Export 
+In order to use configuration sets they need to be exported to the folder locations configured in Kobee for z/OS. These folder locations define where Kobee for z/OS has to pick up the configuration and models and they may vary depending on the environment types (e.g. Build, Test,…) so make sure to check the parameters defined both on the machine and environment levels.
+
+KRC offers some example locations that can be customized to your preference.
+
+image::export.png[,1300,408]
+
+== Exporting a configuration set
+To export a configuration set, click the “Export this Configuration Set” button and then select the desired location from the “Export Location” dropdown. By default both the configuration files and models are exported, if needed they can be excluded by using the checkboxes.
+
+image::export-exporting.png[,800,375]
+
+Click the “Export” button to export the configuration set.
+The configuration and models are exported into distinct folders by default, if needed the folder structure can be changed on the “Configuration Sets” page by clicking the “Edit” link in the breadcrumb.
+
+It is not possible to export to all export locations at once.
+
+== Creating a new export location
+To create a new export location click the “New Export Location” link, in the pop-up panel enter a name in the “Name” text box for the location preferably reflecting the target environment type (BUILD, TEST,…) and a folder location in the “Export Path”.
+
+image::export-create-location.png[,499,290]
+
+Click the “Save” button to create the new export location.
+
+== Deleting an export location
+Use the red button on the right side of the to be removed location in the locations list.
+Click the “Delete” button to delete the export location.

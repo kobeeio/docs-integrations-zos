@@ -1,0 +1,66 @@
+// The imagesdir attribute is only needed to display images during offline editing. Antora neglects the attribute.
+:imagesdir: ../images
+
+[[_models]]
+= Models
+Models, in full: JCL models, are basically job card templates with property placeholders. The placeholders are used to customize the job card according to the type of source code and the z/OS environment it will run in. For every JCL step that is needed, a JCL Model is retrieved from the JCL Models collection that is displayed in this Models section.
+
+image::models.png[,1300,730]
+
+Click the menu item “Models”.
+
+The Model list table displays all the available JCL Models. The models can be sorted alphabetically by name or by export path.
+
+
+== Creating a new model
+When there is no Model available for a required step, you can create a new one by clicking the “New Model” link.
+
+image::models-create.png[,497,401]
+
+In the “Create new Model” pop-up panel complete the following fields.
+
+* File Name: should follow the convention “stepnameWHAT_jcl.model”, see the existing models for examples.
+* Export Path: the subfolder inside the models folder to which this model belongs to semantically, for example a build type step should be put in the “BUILD” folder, see the existing models for examples.
+* Description: states the objective of the model, this field is not required.
+* File Name (Choose File): Pick the file for the model, its file name should be the same as your first field: “File Name”.
+
+Click the “Save” button to save the new model.
+
+
+== Editing a model
+A model can be customized by clicking on the File Name link. 
+
+Click on any model name to see an example.
+
+image::model-example.png[,1300,730]
+
+In the Model Info panel, you will notice 4 action icons at the left and 1 on the right:
+
+image::model-action-links.png[,1098,162]
+
+*Copy Model*: copies the current model to a Configuration Set. KRC appends the model name with “_Copy” to avoid duplicate models, alternatively you can choose another name.
+
+image::model-copy.png[,799,399]
+
+Click the “Copy” button to copy the model.
+
+*Download contents of Model*: downloads the model as a text file to the default download location set in your web browser.
+
+*Upload new contents of Model*: uploads a model in text file format, the file name of the uploaded text file is ignored.
+
+image::model-upload.png[,498,345]
+
+Click the “Save” button to upload the model.
+
+*Edit Model*: edits the model details such as the File Name, Export Path and Description.
+
+image::model-edit.png[,497,401]
+
+Click the “Save” the model details.
+
+*Delete Model*: deletes the current model.
+
+[NOTE]
+====
+The content of a model can only be changed by downloading the model, editing the downloaded model file using a text editor and then uploading the finished model file (to the same model entry). KRC has no built-in text editing capabilities.
+====

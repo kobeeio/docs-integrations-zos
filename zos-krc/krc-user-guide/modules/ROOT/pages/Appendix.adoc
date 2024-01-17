@@ -1,0 +1,46 @@
+// The imagesdir attribute is only needed to display images during offline editing. Antora neglects the attribute.
+:imagesdir: ../images
+
+[[_appendix]]
+= Appendix
+
+== Configuration classes
+* buildabendaid
+* buildcics
+* builddatacom
+* builddb2
+* buildendevor
+* buildidf
+* buildidms
+* buildims
+* buildjman
+* buildluw
+* buildqmf
+* buildsdf2
+* buildsmarttest
+* buildxpediter
+* buildzos
+* db2rules
+* defaultpgms
+* defaultproject
+* deployabendaid
+* deploycics
+* deploycortex
+* deploydatacom
+* deploydb2
+* deploydcf
+* deployendevor
+* deployidms
+* deployjman
+* deployqmf
+* deploysmarttest
+* deploytws
+* deployxpediter
+* deployzos
+* environment
+* jmanrules
+* languages
+* objecttypes
+* osfamily
+* sourcerules
+* zosftpparameters

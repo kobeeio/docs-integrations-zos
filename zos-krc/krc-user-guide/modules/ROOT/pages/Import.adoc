@@ -1,0 +1,99 @@
+// The imagesdir attribute is only needed to display images during offline editing. Antora neglects the attribute.
+:imagesdir: ../images
+
+[[_import]]
+= Import
+Configuration files and models that were previously exported or which originate from older Kobee installations can be imported. During this process KRC will analyze the imported files and list any found errors.
+
+Click the menu item “Import”.
+
+image::import.png[,1300,298]
+
+== Importing configuration files
+It is possible to import a single configuration file or an archive of multiple configuration files.
+
+Note that the import process does not change the filenames of the imported files so check whether they meet your requirements.
+
+
+== Importing a single configuration file
+To import a single configuration file, click the “Import” button in the “Single Configuration File” panel.
+
+image::import-single-configuration.png[,799,400]
+
+Click “Browse” to select the local configuration file that you want to import. Next select the configuration class* the from the dropdown, this is important for the validation and taxonomy of the configuration file. A wrong configuration class will result in a misplaced and empty configuration item in the configuration set. 
+
+(*) for a full list see the configuration classes appendix.
+
+The “Description” field is optional. The “Export Path” field is not mandatory, it is used to determine where the file should be placed when exported, more specifically depending on the process type (build or deploy) should it be in the “BUILD” folder or “DEPLOY” folder of the configuration files.
+
+Click the “Import” button to import the single configuration file.
+
+Make sure to take notes on any warnings displayed in the import log so you can solve these issues manually later on.
+
+A configuration file can be empty; KRC will then populate all the parameter fields from its base definition, however all parameters will be set inactive. The same behavior occurs when the imported file is missing a certain parameter.
+
+
+== Importing a configuration file archive
+To import a configuration file archive, click the “Import” button in the “Configuration File Archive” panel.
+
+image::import-archive.png[,800,262]
+
+Browse for the required file, then click the “Import” button to import the configuration file archive.
+
+There are 2 requirements for importing a configuration file archive:
+
+* The archive must be a “.zip” archive
+* The archive must contain a “krc_conffiles.xml” file that defines the included files.
+
+An example of a “krc_conffiles.xml” file:
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<conffiles>
+  <conffile confclass="db2rules" name="db2Rules.properties" exportpath="" description="DB2 Bind Rules Configuration"/>
+</conffiles>
+----
+
+The “conffile” element represents a single file and should contain the following attributes:
+
+* confclass: the configuration class of the property file*
+* name: the name of the file
+* exportpath: where is the file located (BUILD, DEPLOY, or leave blank for the root folder)
+* description: description of the property file
+
+(*) for a full list see the configuration classes appendix.
+
+Each file included in the archive should have its own “conffile” element entry in the  “krc_conffiles.xml” file
+
+
+== Importing a model  archive
+To import a model archive, click the “Import” button in the “Model Archive” panel.
+
+image::import-model-archive.png[,800,236]
+
+Browse for the required file, then click the “Import” button to import the model archive.
+There are 2 requirements for importing a configuration file archive:
+* The archive must be a “.zip” archive
+* The archive must contain a “krc_models.xml” file that defines the included files.
+
+An example of a “krc_models.xml” file:
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<models>
+  <model filename="allocateDSN_jcl.model" exportpath="DEPLOY" description="allocateDSN_jcl.model" />
+</models>
+----
+
+* filename: the name of the file
+* exportpath: where is the file located (BUILD, DEPLOY)*
+* description: description of the model file
+
+[NOTE]
+====
+Note that it is possible to subdivide related models into specific folders (e.g. “BUILD”, “BUILD/ftp”, “BUILD/zosmf”,...)
+====
+
+If a model already exists in the configuration set then it will not be imported. There is no validation for the content of models.

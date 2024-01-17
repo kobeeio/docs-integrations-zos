@@ -1,0 +1,6 @@
+name: integration-krc-user-guide
+title: KRC User Guide
+version: '6.0'
+start_page: ROOT:Introduction.adoc
+nav:
+- modules/ROOT/nav.adoc

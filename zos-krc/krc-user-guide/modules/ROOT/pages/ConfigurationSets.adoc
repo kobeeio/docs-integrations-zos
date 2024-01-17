@@ -1,0 +1,133 @@
+// The imagesdir attribute is only needed to display images during offline editing. Antora neglects the attribute.
+:imagesdir: ../images
+
+[[_configuration_sets]]
+= Configuration Sets
+The configuration sets page displays the currently selected configuration set, you can see the name of this set in the breadcrumb.
+The “Configuration Sets” menu item allows you to select or create a configuration set.
+
+image::configuration-sets.png[,872,216]
+
+== Creating a new configuration set
+Click the “New Configuration Set” link in the “Configuration Set” dropdown menu. In the “New Configuration Set” pop-up panel complete the following fields.
+
+* Name: the name for the configuration set
+* Description: a description for the configuration set
+* Configuration Files Export Path: the folder where the configuration files are exported to (e.g. “machineName/PhaseResources”)
+* Models Export Path: the folder where the models are exported to (e.g. “machineName/PhaseModels”)
+* Is Default Set: whether this set is the default set when opening KRC
+
+Click the “Save” button to create the new configuration set.
+
+
+== Editing a configuration set
+Click the “Edit” link in the breadcrumb.
+
+image::configuration-set-edit.png[,799,400]
+
+This action allows you to configure the basic settings of the current configuration set. In the “Edit Configuration Set” pop-up panel edit the necessary fields (see “Creating a new configuration set” for an explanation of the fields).
+
+Click the “Save” button to save your changes.
+
+
+== Copying a configuration set
+Click the “Copy” link in the breadcrumb.
+
+image::configuration-set-copy.png[,800,399]
+
+This action allows you to copy the current configuration set to a new one.
+In the “Copy Configuration Set” pop-up panel edit the necessary fields (see “Creating a new configuration set” for an explanation of the fields).
+
+Click the “Copy” button to copy the current configuration set to a new one.
+
+
+== Deleting a configuration set
+Click the “Delete” link in the breadcrumb.
+
+image::configuration-set-delete.png[,800,345]
+
+In the “Delete Configuration Set” pop-up panel, click the “Delete” button. 
+
+Note that this action cannot be undone.
+
+
+== Configuration set items
+A configuration set is divided into 5 categories.
+
+* General: global settings, such as the mainframe connection, which mainframe features are necessary, etc..
+* Preprocessor: configuration of how source code is recognized and processed
+* Compilation: definition of the required JCL steps for a language
+* Build Environment: to set the properties of a specific feature on the Build environment.
+* Deploy Environment: to set the properties of a specific feature on the Deploy environment.
+
+For a detailed explanation read the White Paper.
+https://www.ikanalm.com/whitepapers/IKAN_ALM_for_zOS_with_KRC.pdf[https://www.ikanalm.com/whitepapers/IKAN_ALM_for_zOS_with_KRC.pdf,window=_blank]
+
+
+=== Creating a new configuration set item
+Click on the configuration set item link of the type that you want to create. Create links can be recognized by a preceding plus sign icon.
+
+image::configuration-set-item-create.png[,499,346]
+
+In the “Create <property type> Property” pop-up panel complete the following fields.
+
+    • Name: The name for the item
+    • Description: A description for the item
+    • Export Path: if needed an export path can be set here, this path will be relative to the “Configuration Files Export Path” defined in the configuration set to which this item belongs to.
+
+Click the “Save” button to create the new configuration set item.
+
+
+=== Editing a configuration set item
+Click on the configuration set item link that you want to edit, the edit page will be displayed.
+
+image::configuration-set-item-edit.png[,1300,730]
+
+The configuration file info panel shows the available actions at the left side of the file name and a delete button on the right side followed by a description at the bottom. The available actions are:
+
+* Copy: copies the current configuration item to a Configuration Set of choice. KRC appends the configuration file name with “_Copy” to avoid duplicate configuration files, alternatively you can choose another name.
+* Preview: shows a rendered preview of the current configuration item. Note that a configuration item needs to be saved first (using the button at the end of the page) before changes are visible.
+* Edit Model: edits the configuration item details such as the File Name, Export Path and Description.
+
+A “Back” action link is displayed below the info panel to get back to the configuration set page.
+In the “Edit <configuration item name> parameters configuration” panel below the info panel you can edit the parameters that belong to the configuration item.
+
+The header displays the 2 following action links:
+
+* Show Inactive Items: this option allows you to hide the inactive parameter items from the panel in order to improve the panel overview.
+* Show Descriptions: provides a description of the parameters.
+
+Active parameters are always visible but can be set inactive by moving the switch button at the right side of the parameters item value. When a parameters is mandatory it can not be set inactive.
+When you have finished editing the configuration item, always save your changes first (using the button at the end of the page) before going back to the configuration set.
+
+*Custom properties*
+
+When a required parameter is not present in the default parameter list, it is possible to create a new  parameter by clicking the “Add a Custom Property” action link.
+
+image::configuration-set-custom-property.png[,1081,142]
+
+
+=== Special cases of configuration set items
+There are special cases of configuration items where the configuration set item represents a collection rather that a single item, these are:
+* ObjectTypes
+* Source Rules
+* Languages 
+
+The screenshot below show an example of the ObjectTypes “globalObjtypes.properties” item.
+
+image::configuration-set-special-cases.png[,1300,730]
+
+The configuration file info panel shows the available actions at the left side of the file name and a delete button on the right side followed by a description at the bottom. The available actions are:
+* Copy: copies the current configuration item to a Configuration Set of choice. KRC appends the configuration file name with “_Copy” to avoid duplicate configuration files, alternatively you can choose another name.
+* Preview: shows a rendered preview of the current configuration item. Note that a configuration item needs to be saved first (using the button at the end of the page) before changes are visible.
+* Edit Model: edits the configuration item details such as the File Name, Export Path and Description.
+
+A “Back” action link is displayed below the info panel to get back to the configuration set page.
+
+The “ObjectType list” panel below the info panel shows all the available object types. Also, you can create a new object type if necessary by clicking the “New Object Type” action link.
+
+An object type can be copied by clicking the icon in front of the object type name, it can also be deleted by clicking the red button on the right side of the object type row. To edit an object click the object type name. Below is an example of the “ACAT” object type.
+
+image::configuration-set-object-type.png[,1300,730]
+
+The “ObjectTypes Configuration: Edit ObjectType” page follows the same principle as the edit page for a single configuration set item.

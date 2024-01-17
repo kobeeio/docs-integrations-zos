@@ -1,0 +1,19 @@
+// The imagesdir attribute is only needed to display images during offline editing. Antora neglects the attribute.
+:imagesdir: ../images
+
+[[_backups]]
+= Backups
+Before making changes it is recommended to take a backup, this will save all your configuration sets and models in an archive.
+
+Click the menu item “Backup”.
+
+image::backups.png[,1300,396]
+
+To create a backup, click the “Create New Backup” button, this is an automatic process.
+
+To restore a backup, click the link of the archive that you want to restore, then in the pop-up panel click the “Restore” button.
+
+image::backups-restore.png[,498,290]
+
+To delete a backup, use the red button on the right side of the to be backup in the backups list.
+Click the “Delete” button to delete the backup.
