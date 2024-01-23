@@ -6,9 +6,9 @@ Always consult the "antora.yml" file in the document to verify, it should contai
 
 **Documents in this repository**
 
-* zos-phases-catalog 2.1
-* krc-installation-guide 2.2
-* krc-user-guide 2.2 	      
+* integration-zos-phases-catalog 2.1
+* integration-krc-installation-guide 2.2
+* integration-krc-user-guide 2.2 	      
 
 # Important on new versions
 
